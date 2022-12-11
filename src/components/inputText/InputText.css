@@ -1,0 +1,17 @@
+.input_text {
+  display: block;
+  border-radius: 4px;
+  border: 2px solid #6B99C3;
+  width: 95%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.input_text:focus-visible {
+  outline-color: #D2D2D4;
+}
+
+.input_text::placeholder {
+  color: #6B99C3;
+  font-size: 1rem;
+}
