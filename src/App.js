@@ -4,9 +4,7 @@ import Form from './components/form/Form';
 class App extends React.Component {
   render(){
   return (
-    <>
       <Form/>
-    </>
   );
 }
 }

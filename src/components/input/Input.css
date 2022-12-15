@@ -1,4 +1,4 @@
-.input_date {
+.input {
   display: block;
   border-radius: 4px;
   border: 2px solid #6B99C3;
@@ -7,11 +7,11 @@
   font-size: 1rem;
 }
 
-.input_date:focus-visible {
+.input:focus-visible {
   outline-color: #D2D2D4;
 }
 
-.input_date::placeholder {
+.input::placeholder {
   color: #6B99C3;
   font-size: 1rem;
 }
