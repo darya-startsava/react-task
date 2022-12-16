@@ -16,3 +16,13 @@
   color: #6B99C3;
   font-size: 1rem;
 }
+
+.error_message {
+  height: 20px;
+  color: red;
+}
+
+.inform_message {
+  height: 20px;
+  color: #6B99C3;
+}
