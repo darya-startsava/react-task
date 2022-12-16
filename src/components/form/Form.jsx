@@ -17,7 +17,7 @@ import Button from '../button/Button';
 export default class Form extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.initialState = {
       inputsValidation: INPUTS_DATA.map((item) => {
         return {
           key: item.key,
@@ -34,10 +34,12 @@ export default class Form extends React.Component {
         };
       }),
     };
+    this.state = this.initialState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onChangeValidation = this.onChangeValidation.bind(this);
     this.onSubmitValidation = this.onSubmitValidation.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   handleChange(event) {
@@ -126,6 +128,10 @@ export default class Form extends React.Component {
     }
   }
 
+  clearForm() {
+    this.setState(this.initialState);
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -140,6 +146,7 @@ export default class Form extends React.Component {
               placeholder={item.placeholder}
               onChange={this.handleChange}
               message={this.state.inputsValidation.find((i) => item.key === i.key).message}
+              value={this.state.inputsValidation.find((i) => item.key === i.key).value}
             />
           ))}
           {TEXTAREAS_DATA.map((item) => (
@@ -152,10 +159,13 @@ export default class Form extends React.Component {
               onChange={this.handleChange}
               message={this.state.textareasValidation.find((i) => item.key === i.key).message}
               isValid={this.state.textareasValidation.find((i) => item.key === i.key).isValid}
+              value={this.state.textareasValidation.find((i) => item.key === i.key).value}
             />
           ))}
           <div className="button_wrapper">
-            <Button appearance="cancel">Отмена</Button>
+            <Button appearance="cancel" onClick={this.clearForm}>
+              Отмена
+            </Button>
             <Button type="submit" appearance="save">
               Сохранить
             </Button>
