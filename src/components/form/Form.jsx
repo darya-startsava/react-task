@@ -13,6 +13,7 @@ import {
 } from '../../constants';
 import './Form.css';
 import Button from '../button/Button';
+import { addMask } from '../../utils';
 
 export default class Form extends React.Component {
   constructor() {
@@ -44,7 +45,12 @@ export default class Form extends React.Component {
 
   handleChange(event) {
     const name = event.target.name;
-    const value = event.target.value.trim();
+    let value = event.target.value.trim();
+    if (name === 'phone') {
+      const index = this.state.inputsValidation.findIndex((i) => i.key === name);
+      const prevValue = this.state.inputsValidation[index].value;
+      value = addMask(value, prevValue);
+    }
     const message = this.onChangeValidation(name, value);
     if (event.target.type === 'textarea') {
       let isValid = true;
@@ -113,6 +119,9 @@ export default class Form extends React.Component {
         }
         return UPPER_CASE_MESSAGE;
       case 'website':
+        if (!value) {
+          return EMPTY_FIELD_MESSAGE;
+        }
         if (value.slice(0, 8) === 'https://') {
           return '';
         } else return WEBSITE_MESSAGE;
@@ -123,6 +132,11 @@ export default class Form extends React.Component {
           return `Осталось ${MAX_TEXTAREA_LENGTH - value.length}/${MAX_TEXTAREA_LENGTH} символов`;
         }
         return LIMIT_MESSAGE;
+      case 'phone':
+        if (!value) {
+          return EMPTY_FIELD_MESSAGE;
+        }
+        return '';
       default:
         return '';
     }
