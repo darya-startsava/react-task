@@ -142,7 +142,8 @@ export default class Form extends React.Component {
     }
   }
 
-  clearForm() {
+  clearForm(event) {
+    event.preventDefault();
     this.setState(this.initialState);
   }
 
