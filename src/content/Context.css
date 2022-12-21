@@ -1,0 +1,23 @@
+.content_wrapper {
+  margin: 0 auto;
+  width: 1000px;
+  border-radius: 10px;
+  border: 3px solid #6B99C3;
+  background-color: #D2D2D4;
+  margin-top: 10px;
+  padding: 10px;
+  overflow: auto;
+}
+
+.content_header {
+  text-align: center;
+}
+
+.content_text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.content_text span {
+  font-weight: normal;
+}
