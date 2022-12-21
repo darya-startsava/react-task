@@ -172,7 +172,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        {this.state.showForm && (
+        {this.state.showForm ? (
           <Form handleSubmit={this.handleSubmit} clearForm={this.clearForm}>
             {INPUTS_DATA.map((item) => (
               <Input
@@ -204,8 +204,9 @@ class App extends React.Component {
               />
             ))}
           </Form>
+        ) : (
+          <Content data={this.state.data} />
         )}
-        {!this.state.showForm && <Content data={this.state.data} />}
       </>
     );
   }
