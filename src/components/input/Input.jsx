@@ -3,12 +3,22 @@ import './Input.css';
 
 export default class Input extends React.Component {
   render() {
-    const { type, label, placeholder } = this.props;
+    const { name, type, label, placeholder, message, onChange, value } = this.props;
     return (
-      <label>
-        {label}
-        <input className="input" type={type} placeholder={placeholder} />
-      </label>
+      <>
+        <label>
+          {label}
+          <input
+            className="input"
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            onChange={onChange}
+            value={value}
+          />
+        </label>
+        <div className="error_message">{message}</div>
+      </>
     );
   }
 }
