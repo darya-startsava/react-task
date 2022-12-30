@@ -71,9 +71,8 @@ function App() {
         inputsValidation: prevData.inputsValidation.map((i, ind) => {
           if (ind !== index) {
             return i;
-          } else {
-            return { ...i, value, message };
           }
+          return { ...i, value, message };
         }),
         textareasValidation: prevData.textareasValidation,
       };
@@ -93,13 +92,15 @@ function App() {
           if (i.value === '') {
             isValidForm = false;
             return { ...i, message: EMPTY_FIELD_MESSAGE };
-          } else return i;
+          }
+          return i;
         }),
         textareasValidation: prevData.textareasValidation.map((i) => {
           if (i.value === '') {
             isValidForm = false;
             return { ...i, message: EMPTY_FIELD_MESSAGE };
-          } else return i;
+          }
+          return i;
         }),
       };
     });
@@ -158,40 +159,36 @@ function App() {
     setShowForm(true);
   }
 
-  return (
-    <>
-      {showForm ? (
-        <Form handleSubmit={handleSubmit} clearForm={clearForm}>
-          {INPUTS_DATA.map((item) => (
-            <Input
-              key={item.key}
-              name={item.key}
-              type={item.type}
-              label={item.label}
-              placeholder={item.placeholder}
-              onChange={handleChange}
-              message={data.inputsValidation.find((i) => item.key === i.key).message}
-              value={data.inputsValidation.find((i) => item.key === i.key).value}
-            />
-          ))}
-          {TEXTAREAS_DATA.map((item) => (
-            <Textarea
-              key={item.key}
-              name={item.key}
-              label={item.label}
-              placeholder={item.placeholder}
-              rows={ROW}
-              onChange={handleChange}
-              message={data.textareasValidation.find((i) => item.key === i.key).message}
-              isValid={data.textareasValidation.find((i) => item.key === i.key).isValid}
-              value={data.textareasValidation.find((i) => item.key === i.key).value}
-            />
-          ))}
-        </Form>
-      ) : (
-        <Content data={data} />
-      )}
-    </>
+  return showForm ? (
+    <Form handleSubmit={handleSubmit} clearForm={clearForm}>
+      {INPUTS_DATA.map((item) => (
+        <Input
+          key={item.key}
+          name={item.key}
+          type={item.type}
+          label={item.label}
+          placeholder={item.placeholder}
+          onChange={handleChange}
+          message={data.inputsValidation.find((i) => item.key === i.key).message}
+          value={data.inputsValidation.find((i) => item.key === i.key).value}
+        />
+      ))}
+      {TEXTAREAS_DATA.map((item) => (
+        <Textarea
+          key={item.key}
+          name={item.key}
+          label={item.label}
+          placeholder={item.placeholder}
+          rows={ROW}
+          onChange={handleChange}
+          message={data.textareasValidation.find((i) => item.key === i.key).message}
+          isValid={data.textareasValidation.find((i) => item.key === i.key).isValid}
+          value={data.textareasValidation.find((i) => item.key === i.key).value}
+        />
+      ))}
+    </Form>
+  ) : (
+    <Content data={data} />
   );
 }
 
