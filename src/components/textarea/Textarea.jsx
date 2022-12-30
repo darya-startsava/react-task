@@ -1,9 +1,8 @@
 import React from 'react';
 import './Textarea.css';
 
-export default class Textarea extends React.Component {
-  render() {
-    const { name, label, rows, placeholder, message, onChange, isValid, value } = this.props;
+export default function Textarea(props) {
+    const { name, label, rows, placeholder, message, onChange, isValid, value } = props;
     const messageClass = !isValid ? 'error_message' : 'inform_message';
     return (
       <>
@@ -22,4 +21,4 @@ export default class Textarea extends React.Component {
       </>
     );
   }
-}
+
